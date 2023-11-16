@@ -73,6 +73,7 @@
 										<button class="btn btn-sm btn-outline-primary view_alumni" type="button" data-id="<?php echo $row['id'] ?>" >View</button>
 										<button class="btn btn-sm btn-outline-danger delete_alumni" type="button" data-id="<?php echo $row['id'] ?>">Delete</button>
 									</td>
+									<td></td>
 								</tr>
 								<?php endwhile; ?>
 							</tbody>
@@ -95,7 +96,7 @@
 	}
 	img{
 		max-width:100px;
-		max-height: :150px;
+		max-height:150px;
 	}
 	.avatar {
 	    display: flex;
