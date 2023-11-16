@@ -8,7 +8,5 @@ function deleteOldForums($conn) {
     $deleteQuery = "DELETE FROM forum_topics WHERE date_created < '$thirtyDaysAgo'";
 
     // Execute the query
-    if ($conn->query($deleteQuery) === TRUE) {
-        echo "Forums older than 30 days have been deleted.";
-    }  
+    $conn->query($deleteQuery);
 }

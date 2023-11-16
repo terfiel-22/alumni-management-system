@@ -79,6 +79,12 @@ header.masthead,header.masthead:before {
         </div>
     </div>
    <?php
+   
+
+    // delete older post, this function will run since all action goes here
+    include "./utils/delete_forum_after_30_days.php";
+    deleteOldForums($conn);	
+
     $event = $conn->query("SELECT f.*,u.name from forum_topics f inner join users u on u.id = f.user_id order by f.id desc");
     while($row = $event->fetch_assoc()):
         $trans = get_html_translation_table(HTML_ENTITIES,ENT_QUOTES);
