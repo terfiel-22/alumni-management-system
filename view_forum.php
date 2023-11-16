@@ -170,6 +170,14 @@ header.masthead,header.masthead:before {
 						location.reload()
 					},1000)
 				}
+                
+                // If comment have a badword
+                if(resp == 2) {
+                    alert_toast("Badwords are restricted.",'danger')
+					setTimeout(function(){
+						location.reload()
+					},1000)
+                }
 			}
 		})
 	})

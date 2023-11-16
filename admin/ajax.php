@@ -98,6 +98,9 @@ if($action == "delete_forum"){
 
 if($action == "save_comment"){
 	$save = $crud->save_comment();
+	// if($save)
+	// 	echo $save;
+	// 1 - success, 2-badword/s detected, others-error/failed
 	if($save)
 		echo $save;
 }

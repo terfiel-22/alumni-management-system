@@ -347,8 +347,11 @@ Class Action {
 	}
 	function save_comment(){
 		extract($_POST);
-		$data = " comment = '".htmlentities(str_replace("'","&#x2019;",$comment))."' ";
+		include "../utils/badwords.php";
+		if(isDataHaveBadWord($comment)) return 2;
 
+		$data = " comment = '".htmlentities(str_replace("'","&#x2019;",$comment))."' ";
+		
 		if(empty($id)){
 			$data .= ", topic_id = '$topic_id' ";
 			$data .= ", user_id = '{$_SESSION['login_id']}' ";
@@ -359,6 +362,7 @@ Class Action {
 		if($save)
 			return 1;
 	}
+
 	function delete_comment(){
 		extract($_POST);
 		$delete = $this->db->query("DELETE FROM forum_comments where id = ".$id);
