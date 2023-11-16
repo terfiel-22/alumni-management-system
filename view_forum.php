@@ -56,9 +56,12 @@ header.masthead,header.masthead:before {
             <div class="col-lg-8 align-self-end mb-4 page-title">
                 <h3 class="text-white"><?php echo $title ?></h3>
                 <hr class="divider my-4" />
-            <div class="row col-md-12 mb-2 justify-content-center">
+            <div class=" col-md-12 mb-2 justify-content-center">
                    <span class="badge badge-primary px-3 pt-1 pb-1">
-                        <b><i>Topic Created by: <?php echo $name ?></i></b>
+                        <b><i>Topic Created by: <?php echo $name ?></i></b> 
+                    </span></br>
+                    <span class="badge badge-primary px-3 pt-1 pb-1">
+                        <b><i>Created at: <?php echo date_format(date_create($date_created),"F d, Y") ?></i><b>
                     </span>
             </div>   
             </div>
