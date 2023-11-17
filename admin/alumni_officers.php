@@ -15,10 +15,12 @@
 			<div class="col-md-12">
 				<div class="card">
 					<div class="card-header">
-						<b>ALUMNI Stories</b>
-						<!-- <span class="float:right"><a class="btn btn-primary btn-block btn-sm col-sm-2 float-right" href="index.php?page=manage_alumni" id="new_alumni">
-					<i class="fa fa-plus"></i> New Entry
-				</a></span> -->
+						<b>ALUMNI Officers</b>
+						<span class="">
+							<button class="btn btn-primary btn-block btn-sm col-sm-2 float-right" type="button" id="new_officer">
+					        <i class="fa fa-plus"></i> New
+                            </button>
+				        </span>
 					</div>
 					<div class="card-body">
 						<table class="table table-condensed table-bordered table-hover">
@@ -43,7 +45,7 @@
 							<tbody>
 								<?php 
 								$i = 1;
-								$alumni = $conn->query("SELECT o.position, a.* ,Concat(a.lastname,', ',a.firstname,' ',a.middlename) as name from officers o inner join alumnus_bio a on o.alumnus_bio_id = a.id order by Concat(a.lastname,', ',a.firstname,' ',a.middlename) asc");
+								$alumni = $conn->query("SELECT o.position,o.id as officer_id, a.* ,Concat(a.lastname,', ',a.firstname,' ',a.middlename) as name from officers o inner join alumnus_bio a on o.alumnus_bio_id = a.id order by Concat(a.lastname,', ',a.firstname,' ',a.middlename) asc");
 								while($row=$alumni->fetch_assoc()):
 									
 								?>
@@ -76,9 +78,9 @@
 												<span class="sr-only">Toggle Dropdown</span>
 											</button>
 											<div class="dropdown-menu">
-												<a class="dropdown-item edit_document" href="javascript:void(0)" data-id = '<?php echo $row['id'] ?>'>Edit</a>
-												<div class="dropdown-divider"></div>
-												<a class="dropdown-item delete_document" href="javascript:void(0)" data-id = '<?php echo $row['id'] ?>'>Delete</a>
+                                                <a class="dropdown-item view_alumni" href="javascript:void(0)" data-id = '<?php echo $row['id'] ?>'>View</a>
+                                                <div class="dropdown-divider"></div>
+												<a class="dropdown-item edit_officer" href="javascript:void(0)" data-id = '<?php echo $row['officer_id'] ?>'>Edit</a> 
 											</div>
 											</div>
 										</center>
@@ -127,13 +129,18 @@
 	$(document).ready(function(){
 		$('table').dataTable()
 	})
-	
+
+	$('#new_officer').click(function(){
+		uni_modal("New Entry","manage_officer.php",'mid-large')
+	})
+
 	$('.view_alumni').click(function(){
 		uni_modal("Bio","view_alumni.php?id="+$(this).attr('data-id'),'mid-large')
 		
 	})
-	$('.delete_alumni').click(function(){
-		_conf("Are you sure to delete this alumni?","delete_alumni",[$(this).attr('data-id')])
+	$('.edit_officer').click(function(){
+		uni_modal("Manage Officer","manage_officer.php?id="+$(this).attr('data-id'),'mid-large')
+		
 	})
 	
 	function delete_alumni($id){

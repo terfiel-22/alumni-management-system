@@ -158,5 +158,12 @@ if($action == "delete_document"){
 	if($save)
 		echo $save;
 }
+
+// officer
+if($action == "save_officer"){
+	$save = $crud->save_officer();
+	if($save)
+		echo $save;
+}
 ob_end_flush();
 ?>

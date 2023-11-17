@@ -491,4 +491,22 @@ Class Action {
 			return 1;
 		}
 	}
+
+	// Officer
+	function save_officer(){
+		extract($_POST);
+		$data = "alumnus_bio_id = '$alumni'";
+		$data .= ",position = '$position'"; 
+		try {
+			if(empty($id)){
+				$save = $this->db->query("INSERT INTO officers set ".$data);
+			}else{
+				$save = $this->db->query("UPDATE officers set ".$data." where id=".$id);
+			}
+			if($save)
+				return 1;
+		} catch (Exception $e) {
+			return 2;
+		}
+	}
 }
