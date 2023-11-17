@@ -61,7 +61,10 @@ header.masthead,header.masthead:before {
                         <b><i>Topic Created by: <?php echo $name ?></i></b> 
                     </span></br>
                     <span class="badge badge-primary px-3 pt-1 pb-1">
-                        <b><i><?php echo date_format(date_create($date_created),"h:iA, F d, Y") ?></i><b>
+                        <b><i><?php
+                        include './utils/format_date.php';
+                        format_date($date_created);
+                        ?></i><b>
                     </span>
             </div>   
             </div>

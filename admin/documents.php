@@ -39,16 +39,16 @@
 							<thead>
 								<tr>
 									<th class="text-center">#</th>
-									<th class="">Company</th>
-									<th class="">Job Title</th>
-									<th class="">Posted By</th>
+									<th class="">Name</th>
+									<th class="">Creation Date</th>
+									<th class="">Uploaded By</th>
 									<th class="text-center">Action</th>
 								</tr>
 							</thead>
 							<tbody>
 								<?php 
 								$i = 1;
-								$jobs =  $conn->query("SELECT c.*,u.name from careers c inner join users u on u.id = c.user_id order by id desc");
+								$jobs =  $conn->query("SELECT d.*,u.name as user_name from documents d inner join users u on u.id = d.user_id order by id desc");
 								while($row=$jobs->fetch_assoc()):
 									
 								?>
@@ -56,15 +56,19 @@
 									
 									<td class="text-center"><?php echo $i++ ?></td>
 									<td class="">
-										 <p><b><?php echo ucwords($row['company']) ?></b></p>
-										 
-									</td>
-									<td class="">
-										 <p><b><?php echo ucwords($row['job_title']) ?></b></p>
-										 
-									</td>
-									<td class="">
 										 <p><b><?php echo ucwords($row['name']) ?></b></p>
+										 
+									</td>
+									<td class="">
+										 <p><b>
+                                            <?php 
+                                            include '../utils/format_date.php';
+                                            format_date($row['date_created']); ?>
+                                        </b></p>
+										 
+									</td>
+									<td class="">
+										 <p><b><?php echo ucwords($row['user_name']) ?></b></p>
 										 
 									</td>
 									<td class="text-center">
