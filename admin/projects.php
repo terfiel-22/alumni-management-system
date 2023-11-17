@@ -31,7 +31,7 @@
                     <div class="card-header">
                         <b>Projects</b>
                         <span class="">
-                            <button class="btn btn-primary btn-block btn-sm col-sm-2 float-right" type="button" id="new_fund">
+                            <button class="btn btn-primary btn-block btn-sm col-sm-2 float-right" type="button" id="new_project">
                                 <i class="fa fa-plus"></i> New</button>
                         </span>
                     </div>
@@ -86,9 +86,9 @@
                                                         <span class="sr-only">Toggle Dropdown</span>
                                                     </button>
                                                     <div class="dropdown-menu">
-                                                        <a class="dropdown-item edit_fund" href="javascript:void(0)" data-id='<?php echo $row['id'] ?>'>Edit</a>
+                                                        <a class="dropdown-item edit_project" href="javascript:void(0)" data-id='<?php echo $row['id'] ?>'>Edit</a>
                                                         <div class="dropdown-divider"></div>
-                                                        <a class="dropdown-item delete_fund" href="javascript:void(0)" data-id='<?php echo $row['id'] ?>'>Delete</a>
+                                                        <a class="dropdown-item delete_project" href="javascript:void(0)" data-id='<?php echo $row['id'] ?>'>Delete</a>
                                                     </div>
                                                 </div>
                                             </center>
@@ -96,14 +96,6 @@
                                     </tr>
                                 <?php endwhile; ?>
                             </tbody>
-                            <?php
-                            $row = $conn->query("SELECT SUM(current_amount_raised) as total FROM funds");
-                            if ($row->num_rows > 0) {
-                                $row = $row->fetch_assoc();
-                            }
-                            ?>
-                            <caption><b>Total funds: </b> &nbsp;&nbsp;PHP <?php echo $row['total']; ?>
-                            </caption>
                         </table>
                     </div>
                 </div>
@@ -164,21 +156,21 @@
             ],
         });
     })
-    $('#new_fund').click(function() {
-        uni_modal("New Entry", "manage_fund.php", 'mid-large')
+    $('#new_project').click(function() {
+        uni_modal("New Entry", "manage_project.php", 'mid-large')
     })
 
-    $('.edit_fund').click(function() {
-        uni_modal("Manage Fund", "manage_fund.php?id=" + $(this).attr('data-id'), 'mid-large')
+    $('.edit_project').click(function() {
+        uni_modal("Manage Project", "manage_project.php?id=" + $(this).attr('data-id'), 'mid-large')
     })
-    $('.delete_fund').click(function() {
-        _conf("Are you sure to delete this fund?", "delete_fund", [$(this).attr('data-id')], 'mid-large')
+    $('.delete_project').click(function() {
+        _conf("Are you sure to delete this project?", "delete_project", [$(this).attr('data-id')], 'mid-large')
     })
 
-    function delete_fund($id) {
+    function delete_project($id) {
         start_load()
         $.ajax({
-            url: 'ajax.php?action=delete_fund',
+            url: 'ajax.php?action=delete_project',
             method: 'POST',
             data: {
                 id: $id

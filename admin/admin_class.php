@@ -583,4 +583,36 @@ class Action
 			return 1;
 		}
 	}
+
+	// Project
+
+	function save_project()
+	{
+		extract($_POST);
+		$data = "name = '$name'";
+		$data .= ",goal = '$goal'";
+		$data .= ",start_date = '$start_date'";
+		$data .= ",end_date = '$end_date'";
+		$data .= ",status = '$status'";
+		try {
+			if (empty($id)) {
+				$save = $this->db->query("INSERT INTO projects set " . $data);
+			} else {
+				$save = $this->db->query("UPDATE projects set " . $data . " where id=" . $id);
+			}
+			if ($save)
+				return 1;
+		} catch (Exception $e) {
+			return $e->getMessage();
+		}
+	}
+	function delete_project()
+	{
+		extract($_POST);
+		// Delete document on DB
+		$delete = $this->db->query("DELETE FROM projects where id = " . $id);
+		if ($delete) {
+			return 1;
+		}
+	}
 }

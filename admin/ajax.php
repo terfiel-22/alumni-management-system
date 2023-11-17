@@ -181,4 +181,21 @@ if (
 		echo $save;
 }
 
+// Project
+//fund
+if (
+	$action == "save_project"
+) {
+	$save = $crud->save_project();
+	if ($save)
+		echo $save;
+}
+if (
+	$action == "delete_project"
+) {
+	$save = $crud->delete_project();
+	if ($save)
+		echo $save;
+}
+
 ob_end_flush();
