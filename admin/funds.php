@@ -32,7 +32,7 @@
                         <b>Forum List</b>
                         <span class="">
 
-                            <button class="btn btn-primary btn-block btn-sm col-sm-2 float-right" type="button" id="new_forum">
+                            <button class="btn btn-primary btn-block btn-sm col-sm-2 float-right" type="button" id="new_fund">
                                 <i class="fa fa-plus"></i> New</button>
                         </span>
                     </div>
@@ -95,9 +95,9 @@
                                                         <span class="sr-only">Toggle Dropdown</span>
                                                     </button>
                                                     <div class="dropdown-menu">
-                                                        <a class="dropdown-item edit_document" href="javascript:void(0)" data-id='<?php echo $row['id'] ?>'>Edit</a>
+                                                        <a class="dropdown-item edit_fund" href="javascript:void(0)" data-id='<?php echo $row['id'] ?>'>Edit</a>
                                                         <div class="dropdown-divider"></div>
-                                                        <a class="dropdown-item delete_document" href="javascript:void(0)" data-id='<?php echo $row['id'] ?>'>Delete</a>
+                                                        <a class="dropdown-item delete_fund" href="javascript:void(0)" data-id='<?php echo $row['id'] ?>'>Delete</a>
                                                     </div>
                                                 </div>
                                             </center>
@@ -125,29 +125,28 @@
 
     img {
         max-width: 100px;
-        max-height: :150px;
+        max-height: 150px;
     }
 </style>
 <script>
     $(document).ready(function() {
         $('table').dataTable()
     })
-    $('#new_forum').click(function() {
-        uni_modal("New Entry", "manage_forum.php", 'mid-large')
+    $('#new_fund').click(function() {
+        uni_modal("New Entry", "manage_fund.php", 'mid-large')
     })
 
-    $('.edit_forum').click(function() {
-        uni_modal("Manage Job Post", "manage_forum.php?id=" + $(this).attr('data-id'), 'mid-large')
-
+    $('.edit_fund').click(function() {
+        uni_modal("Manage Fund", "manage_fund.php?id=" + $(this).attr('data-id'), 'mid-large')
     })
-    $('.delete_forum').click(function() {
-        _conf("Are you sure to delete this topic?", "delete_forum", [$(this).attr('data-id')], 'mid-large')
+    $('.delete_fund').click(function() {
+        _conf("Are you sure to delete this fund?", "delete_fund", [$(this).attr('data-id')], 'mid-large')
     })
 
-    function delete_forum($id) {
+    function delete_fund($id) {
         start_load()
         $.ajax({
-            url: 'ajax.php?action=delete_forum',
+            url: 'ajax.php?action=delete_fund',
             method: 'POST',
             data: {
                 id: $id

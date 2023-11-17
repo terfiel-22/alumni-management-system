@@ -550,4 +550,37 @@ class Action
 			return 2;
 		}
 	}
+
+	// Fund
+	function save_fund()
+	{
+		extract($_POST);
+		$data = "name = '$name'";
+		$data .= ",goal = '$goal'";
+		$data .= ",end_date = '$end_date'";
+		$data .= ",start_date = '$start_date'";
+		$data .= ",current_amount_raised = '$current_amount_raised'";
+		$data .= ",fund_manager_id = '$fund_manager_id'";
+		$data .= ",status = '$status'";
+		try {
+			if (empty($id)) {
+				$save = $this->db->query("INSERT INTO funds set " . $data);
+			} else {
+				$save = $this->db->query("UPDATE funds set " . $data . " where id=" . $id);
+			}
+			if ($save)
+				return 1;
+		} catch (Exception $e) {
+			return 2;
+		}
+	}
+	function delete_fund()
+	{
+		extract($_POST);
+		// Delete document on DB
+		$delete = $this->db->query("DELETE FROM funds where id = " . $id);
+		if ($delete) {
+			return 1;
+		}
+	}
 }
