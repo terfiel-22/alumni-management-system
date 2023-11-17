@@ -73,7 +73,7 @@
 									</td>
 									<td class="text-center">
 										<button class="btn btn-sm btn-outline-primary view_career" type="button" data-id="<?php echo $row['id'] ?>" >View</button>
-										<button class="btn btn-sm btn-outline-primary edit_career" type="button" data-id="<?php echo $row['id'] ?>" >Edit</button>
+										<button class="btn btn-sm btn-outline-primary edit_document" type="button" data-id="<?php echo $row['id'] ?>" >Edit</button>
 										<button class="btn btn-sm btn-outline-danger delete_career" type="button" data-id="<?php echo $row['id'] ?>">Delete</button>
 									</td>
 								</tr>
@@ -109,8 +109,8 @@
 		uni_modal("New Entry","manage_document.php",'mid-large')
 	})
 	
-	$('.edit_career').click(function(){
-		uni_modal("Manage Job Post","manage_career.php?id="+$(this).attr('data-id'),'mid-large')
+	$('.edit_document').click(function(){
+		uni_modal("Manage Document","manage_document.php?id="+$(this).attr('data-id'),'mid-large')
 		
 	})
 	$('.view_career').click(function(){

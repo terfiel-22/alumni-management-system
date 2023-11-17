@@ -1,7 +1,7 @@
 <?php include 'db_connect.php' ?>
 <?php
 if(isset($_GET['id'])){
-	$qry = $conn->query("SELECT * FROM careers where id=".$_GET['id'])->fetch_array();
+	$qry = $conn->query("SELECT * FROM documents where id=".$_GET['id'])->fetch_array();
 	foreach($qry as $k =>$v){
 		$$k = $v;
 	}
@@ -19,13 +19,13 @@ if(isset($_GET['id'])){
 		<div class="row form-group">
 			<div class="col-md-8">
 				<label class="control-label">Name</label>
-				<input type="text" name="name" class="form-control" value="<?php echo isset($company) ? $company:'' ?>">
+				<input type="text" name="name" class="form-control" value="<?php echo isset($name) ? $name:'' ?>">
 			</div>
 		</div>
 		<div class="row form-group">
 			<div class="col-md-8">
-				<label class="control-label">File</label>
-				<input type="file" name="document" class="form-control" value="<?php echo isset($job_title) ? $job_title:'' ?>">
+				<label class="control-label"><?php echo isset($name) ? "Re-upload/Change" :'' ?> File</label>
+				<input type="file" name="document" class="form-control">
 			</div>
 		</div>
 	</form>
