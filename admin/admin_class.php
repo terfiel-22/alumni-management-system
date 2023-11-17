@@ -413,8 +413,6 @@ Class Action {
 	// Document
 	function save_document(){
 		extract($_POST);
-		$data = "name = '$name'";
-		$data .= ", user_id = '{$_SESSION['login_id']}' ";
 		$document = array();
   		$fpath = 'assets/uploads/documents';
 		$files= is_dir($fpath) ? scandir($fpath) : array();
@@ -425,12 +423,15 @@ Class Action {
 			}
 		}
 		if(empty($id)){
+			$file = explode('.',$_FILES['document']['name']);
+			$file = end($file);
+			$data = "name = '$name'";
+			$data .= ", user_id = '{$_SESSION['login_id']}' ";
+			$data .= ", file_extension = '$file'";
 			$save = $this->db->query("INSERT INTO documents set ".$data);
 			if($save){
 				$id = $this->db->insert_id;
 				$folder = "assets/uploads/documents/";
-				$file = explode('.',$_FILES['document']['name']);
-				$file = end($file);
 				if(is_file($folder.$id.'/_document'.'.'.$file))
 					unlink($folder.$id.'/_document'.'.'.$file);
 				if(isset($document[$id]))
@@ -461,6 +462,30 @@ Class Action {
 	}
 	function delete_document(){
 		extract($_POST);
+		$document = array();
+		$fpath = 'assets/uploads/documents';
+		$files= is_dir($fpath) ? scandir($fpath) : array();
+		foreach($files as $val){
+			if(!in_array($val, array('.','..'))){
+				$n = explode('_',$val);
+				$document[$n[0]] = $val;
+			}
+		}
+
+		// Get document's data on database
+		$qry = $this->db->query("SELECT * FROM documents where id=".$id)->fetch_array();
+		foreach($qry as $k =>$v){
+			$$k = $v;
+		}
+
+		// Delete document on folder
+		$folder = "assets/uploads/documents/";
+		if(is_file($folder.$id.'/_document'.'.'.$file_extension))
+			unlink($folder.$id.'/_document'.'.'.$file_extension);
+		if(isset($document[$id]))
+			unlink($folder.$document[$id]);
+
+		// Delete document on DB
 		$delete = $this->db->query("DELETE FROM documents where id = ".$id);
 		if($delete){
 			return 1;

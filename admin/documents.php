@@ -72,9 +72,21 @@
 										 
 									</td>
 									<td class="text-center">
-										<button class="btn btn-sm btn-outline-primary view_career" type="button" data-id="<?php echo $row['id'] ?>" >View</button>
-										<button class="btn btn-sm btn-outline-primary edit_document" type="button" data-id="<?php echo $row['id'] ?>" >Edit</button>
-										<button class="btn btn-sm btn-outline-danger delete_document" type="button" data-id="<?php echo $row['id'] ?>">Delete</button>
+										<center>
+											<div class="btn-group">
+											<button type="button" class="btn btn-primary">Action</button>
+											<button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+												<span class="sr-only">Toggle Dropdown</span>
+											</button>
+											<div class="dropdown-menu">
+												<a class="dropdown-item download_document" href="javascript:void(0)" data-id = '<?php echo $row['id'] ?>'>Download</a>
+												<div class="dropdown-divider"></div>
+												<a class="dropdown-item edit_document" href="javascript:void(0)" data-id = '<?php echo $row['id'] ?>'>Edit</a>
+												<div class="dropdown-divider"></div>
+												<a class="dropdown-item delete_document" href="javascript:void(0)" data-id = '<?php echo $row['id'] ?>'>Delete</a>
+											</div>
+											</div>
+										</center>
 									</td>
 								</tr>
 								<?php endwhile; ?>
