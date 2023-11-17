@@ -64,6 +64,13 @@ include "../utils/format_date.php";
                         location.reload()
                     }, 1000)
                 }
+
+                if (resp == 2) {
+                    alert_toast("Duplicated project is not allowed.", 'danger')
+                    setTimeout(function() {
+                        location.reload()
+                    }, 1000)
+                }
             }
         })
     })

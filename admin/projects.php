@@ -128,7 +128,7 @@
                     footer: true,
                     orientation: 'portrait',
                     pageSize: 'LEGAL',
-                    title: 'Funds Report',
+                    title: 'Projects Report',
                     exportOptions: {
                         columns: [0, 1, 2, 3, 4, 5, 6]
                     }
@@ -138,7 +138,7 @@
                     footer: true,
                     orientation: 'portrait',
                     pageSize: 'LEGAL',
-                    title: 'Funds Report',
+                    title: 'Projects Report',
                     exportOptions: {
                         columns: [0, 1, 2, 3, 4, 5, 6]
                     }
@@ -148,7 +148,7 @@
                     footer: true,
                     orientation: 'portrait',
                     pageSize: 'LEGAL',
-                    title: 'Funds Report',
+                    title: 'Projects Report',
                     exportOptions: {
                         columns: [0, 1, 2, 3, 4, 5, 6]
                     }

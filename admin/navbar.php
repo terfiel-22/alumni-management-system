@@ -22,7 +22,8 @@
 			<a href="index.php?page=projects" class="nav-item nav-projects"><span class='icon-field'><i class="fa fa-list-ul"></i></span> Projects</a>
 			<a href="index.php?page=users" class="nav-item nav-users"><span class='icon-field'><i class="fa fa-users"></i></span> Users</a>
 			<a href="index.php?page=documents" class="nav-item nav-documents"><span class='icon-field'><i class="fa fa-file"></i></span> Documents</a>
-			<a href="index.php?page=alumni_officers" class="nav-item nav-alumni_officers"><span class='icon-field'><i class="fa fa-users"></i></span> Alumni Officers</a>
+			<a href="index.php?page=alumni_officers" class="nav-item nav-alumni_officers"><span class='icon-field'><i class="fa fa-user-tie"></i></span> Alumni Officers</a>
+			<a href="index.php?page=batch_list" class="nav-item nav-batch_list"><span class='icon-field'><i class="fa fa-users"></i></span> Batch List </a>
 			<a href="index.php?page=site_settings" class="nav-item nav-site_settings"><span class='icon-field'><i class="fa fa-cogs"></i></span> System Settings</a>
 		<?php endif; ?>
 	</div>
