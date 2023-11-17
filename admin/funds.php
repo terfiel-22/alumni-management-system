@@ -105,6 +105,14 @@
                                     </tr>
                                 <?php endwhile; ?>
                             </tbody>
+                            <?php
+                            $row = $conn->query("SELECT SUM(current_amount_raised) as total FROM funds");
+                            if ($row->num_rows > 0) {
+                                $row = $row->fetch_assoc();
+                            }
+                            ?>
+                            <caption><b>Total funds: </b> &nbsp;&nbsp;PHP <?php echo $row['total']; ?>
+                            </caption>
                         </table>
                     </div>
                 </div>
@@ -130,7 +138,40 @@
 </style>
 <script>
     $(document).ready(function() {
-        $('table').dataTable()
+        $('table').dataTable({
+            dom: 'Bfrtip',
+            buttons: [{
+                    extend: 'pdf',
+                    footer: true,
+                    orientation: 'portrait',
+                    pageSize: 'LEGAL',
+                    title: 'Funds Report',
+                    exportOptions: {
+                        columns: [0, 1, 2, 3, 4, 5, 6]
+                    }
+                },
+                {
+                    extend: 'excel',
+                    footer: true,
+                    orientation: 'portrait',
+                    pageSize: 'LEGAL',
+                    title: 'Funds Report',
+                    exportOptions: {
+                        columns: [0, 1, 2, 3, 4, 5, 6]
+                    }
+                },
+                {
+                    extend: 'csv',
+                    footer: true,
+                    orientation: 'portrait',
+                    pageSize: 'LEGAL',
+                    title: 'Funds Report',
+                    exportOptions: {
+                        columns: [0, 1, 2, 3, 4, 5, 6]
+                    }
+                },
+            ],
+        });
     })
     $('#new_fund').click(function() {
         uni_modal("New Entry", "manage_fund.php", 'mid-large')

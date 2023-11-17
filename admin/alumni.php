@@ -72,7 +72,7 @@
 											<button class="btn btn-sm btn-outline-primary view_alumni" type="button" data-id="<?php echo $row['id'] ?>">View</button>
 											<button class="btn btn-sm btn-outline-danger delete_alumni" type="button" data-id="<?php echo $row['id'] ?>">Delete</button>
 										</td>
-										<td></td>
+										<td><?php echo $row['connected_to'] ?></td>
 									</tr>
 								<?php endwhile; ?>
 							</tbody>

@@ -19,6 +19,7 @@
 		<a href="index.php?page=funds" class="nav-item nav-funds"><span class='icon-field'><i class="fa fa-coins"></i></span> Funds </a>
 		<a href="index.php?page=forums" class="nav-item nav-forums"><span class='icon-field'><i class="fa fa-comments"></i></span> Program & Events </a>
 		<?php if ($_SESSION['login_type'] == 1) : ?>
+			<a href="index.php?page=projects" class="nav-item nav-projects"><span class='icon-field'><i class="fa fa-list-ul"></i></span> Projects</a>
 			<a href="index.php?page=users" class="nav-item nav-users"><span class='icon-field'><i class="fa fa-users"></i></span> Users</a>
 			<a href="index.php?page=documents" class="nav-item nav-documents"><span class='icon-field'><i class="fa fa-file"></i></span> Documents</a>
 			<a href="index.php?page=alumni_officers" class="nav-item nav-alumni_officers"><span class='icon-field'><i class="fa fa-users"></i></span> Alumni Officers</a>
