@@ -72,10 +72,10 @@
                                             <p><b><?php echo $row['fund_manager'] ?></b></p>
                                         </td>
                                         <td class="">
-                                            <p><b><?php echo format_date($row['start_date']); ?></b></p>
+                                            <p><b><?php echo format_date($row['start_date'], 'F d, Y'); ?></b></p>
                                         </td>
                                         <td class="">
-                                            <p><b><?php echo format_date($row['end_date']); ?></b></p>
+                                            <p><b><?php echo format_date($row['end_date'], 'F d, Y'); ?></b></p>
                                         </td>
                                         <td class="">
                                             <p><b><?php echo "PHP " . $row['current_amount_raised'] ?></b></p>
