@@ -42,12 +42,13 @@
                             <thead>
                                 <tr>
                                     <th class="text-center">#</th>
-                                    <th class="">Fund Name</th>
+                                    <th class="">Project Name</th>
                                     <th class="">Goal</th>
                                     <th class="">Fund Manager</th>
                                     <th class="">Start Date</th>
                                     <th class="">End Date</th>
                                     <th class="">Current Amount Raised</th>
+                                    <th class="">Target Amount</th>
                                     <th class="">Status</th>
                                     <th class="text-center">Action</th>
                                 </tr>
@@ -56,7 +57,7 @@
                                 <?php
                                 $i = 1;
                                 include('../utils/format_date.php');
-                                $funds =  $conn->query("SELECT f.*,Concat(a.lastname,', ',a.firstname,' ',a.middlename) as fund_manager from funds f inner join alumnus_bio a on a.id = f.fund_manager_id order by f.id desc");
+                                $funds =  $conn->query("SELECT f.*,Concat(a.lastname,', ',a.firstname,' ',a.middlename) as fund_manager,p.name,p.goal,p.start_date,p.end_date,p.status from funds f inner join alumnus_bio a on a.id = f.fund_manager_id inner join projects p on p.id = f.project_id order by f.id desc");
                                 while ($row = $funds->fetch_assoc()) :
                                 ?>
                                     <tr>
@@ -79,6 +80,9 @@
                                         </td>
                                         <td class="">
                                             <p><b><?php echo "PHP " . $row['current_amount_raised'] ?></b></p>
+                                        </td>
+                                        <td class="">
+                                            <p><b><?php echo "PHP " . $row['target_amount'] ?></b></p>
                                         </td>
                                         <td class="text-center">
                                             <?php if ($row['status'] == 1) : ?>
@@ -106,12 +110,15 @@
                                 <?php endwhile; ?>
                             </tbody>
                             <?php
-                            $row = $conn->query("SELECT SUM(current_amount_raised) as total FROM funds");
+                            $row = $conn->query("SELECT SUM(current_amount_raised) as total_funds, SUM(target_amount) as total_target_amt FROM funds");
                             if ($row->num_rows > 0) {
                                 $row = $row->fetch_assoc();
                             }
                             ?>
-                            <caption><b>Total funds: </b> &nbsp;&nbsp;PHP <?php echo $row['total']; ?>
+                            <caption>
+                                <b>Total funds: </b> &nbsp;&nbsp;PHP <?php echo $row['total_funds']; ?>
+                                <br>
+                                <b>Total target amount: </b> &nbsp;&nbsp;PHP <?php echo $row['total_target_amt']; ?>
                             </caption>
                         </table>
                     </div>
@@ -143,31 +150,31 @@
             buttons: [{
                     extend: 'pdf',
                     footer: true,
-                    orientation: 'portrait',
+                    orientation: 'landscape',
                     pageSize: 'LEGAL',
                     title: 'Funds Report',
                     exportOptions: {
-                        columns: [0, 1, 2, 3, 4, 5, 6]
+                        columns: [0, 1, 2, 3, 4, 5, 6, 7]
                     }
                 },
                 {
                     extend: 'excel',
                     footer: true,
-                    orientation: 'portrait',
+                    orientation: 'landscape',
                     pageSize: 'LEGAL',
                     title: 'Funds Report',
                     exportOptions: {
-                        columns: [0, 1, 2, 3, 4, 5, 6]
+                        columns: [0, 1, 2, 3, 4, 5, 6, 7]
                     }
                 },
                 {
                     extend: 'csv',
                     footer: true,
-                    orientation: 'portrait',
+                    orientation: 'landscape',
                     pageSize: 'LEGAL',
                     title: 'Funds Report',
                     exportOptions: {
-                        columns: [0, 1, 2, 3, 4, 5, 6]
+                        columns: [0, 1, 2, 3, 4, 5, 6, 7]
                     }
                 },
             ],

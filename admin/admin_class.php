@@ -555,13 +555,10 @@ class Action
 	function save_fund()
 	{
 		extract($_POST);
-		$data = "name = '$name'";
-		$data .= ",goal = '$goal'";
-		$data .= ",end_date = '$end_date'";
-		$data .= ",start_date = '$start_date'";
+		$data = "project_id = '$project_id'";
 		$data .= ",current_amount_raised = '$current_amount_raised'";
+		$data .= ",target_amount = '$target_amount'";
 		$data .= ",fund_manager_id = '$fund_manager_id'";
-		$data .= ",status = '$status'";
 		try {
 			if (empty($id)) {
 				$save = $this->db->query("INSERT INTO funds set " . $data);

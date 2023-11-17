@@ -182,7 +182,6 @@ if (
 }
 
 // Project
-//fund
 if (
 	$action == "save_project"
 ) {
