@@ -260,7 +260,7 @@ Class Action {
 			}
 		}
 		if(empty($id)){
-			$save = $this->db->query("INSERT INTO gallery set about = '$about' ");
+			$save = $this->db->query("INSERT INTO gallery set name = '$name' ");
 			if($save){
 				$id = $this->db->insert_id;
 				$folder = "assets/uploads/gallery/";
@@ -408,5 +408,55 @@ Class Action {
 		if($commit)
 			return 1;
 
+	}
+
+	// Document
+	function save_document(){
+		extract($_POST);
+		$data = "name = '$name'";
+		$data .= ", user_id = '{$_SESSION['login_id']}' ";
+		$document = array();
+  		$fpath = 'assets/uploads/documents';
+		$files= is_dir($fpath) ? scandir($fpath) : array();
+		foreach($files as $val){
+			if(!in_array($val, array('.','..'))){
+				$n = explode('_',$val);
+				$document[$n[0]] = $val;
+			}
+		}
+		if(empty($id)){
+			$save = $this->db->query("INSERT INTO documents set ".$data);
+			if($save){
+				$id = $this->db->insert_id;
+				$folder = "assets/uploads/documents/";
+				$file = explode('.',$_FILES['document']['name']);
+				$file = end($file);
+				if(is_file($folder.$id.'/_document'.'.'.$file))
+					unlink($folder.$id.'/_document'.'.'.$file);
+				if(isset($document[$id]))
+					unlink($folder.$document[$id]);
+				if($_FILES['document']['tmp_name'] != ''){
+					$fname = $id.'_document'.'.'.$file;
+					$move = move_uploaded_file($_FILES['document']['tmp_name'],'assets/uploads/documents/'. $fname);
+				}
+			}
+		}else{
+			$save = $this->db->query("UPDATE documents set ".$data." where id=".$id);
+			if($save){
+				if($_FILES['document']['tmp_name'] != ''){
+					$folder = "assets/uploads/documents/";
+					$file = explode('.',$_FILES['document']['name']);
+					$file = end($file);
+					if(is_file($folder.$id.'/_document'.'.'.$file))
+						unlink($folder.$id.'/_document'.'.'.$file);
+					if(isset($img[$id]))
+						unlink($folder.$img[$id]);
+					$fname = $id.'_document'.'.'.$file;
+					$move = move_uploaded_file($_FILES['document']['tmp_name'],'assets/uploads/documents/'. $fname);
+				}
+			}
+		}
+		if($save)
+			return 1;
 	}
 }

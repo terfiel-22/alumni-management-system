@@ -29,7 +29,7 @@
 						<b>Documents</b>
 						<span class="">
 
-							<button class="btn btn-primary btn-block btn-sm col-sm-2 float-right" type="button" id="new_career">
+							<button class="btn btn-primary btn-block btn-sm col-sm-2 float-right" type="button" id="new_document">
 					<i class="fa fa-plus"></i> New</button>
 				</span>
 					</div>
@@ -49,6 +49,8 @@
 								<?php 
 								$i = 1;
 								$jobs =  $conn->query("SELECT d.*,u.name as user_name from documents d inner join users u on u.id = d.user_id order by id desc");
+                                
+                                include '../utils/format_date.php';
 								while($row=$jobs->fetch_assoc()):
 									
 								?>
@@ -61,9 +63,7 @@
 									</td>
 									<td class="">
 										 <p><b>
-                                            <?php 
-                                            include '../utils/format_date.php';
-                                            format_date($row['date_created']); ?>
+                                            <?php  format_date($row['date_created']); ?>
                                         </b></p>
 										 
 									</td>
@@ -105,8 +105,8 @@
 	$(document).ready(function(){
 		$('table').dataTable()
 	})
-	$('#new_career').click(function(){
-		uni_modal("New Entry","manage_career.php",'mid-large')
+	$('#new_document').click(function(){
+		uni_modal("New Entry","manage_document.php",'mid-large')
 	})
 	
 	$('.edit_career').click(function(){

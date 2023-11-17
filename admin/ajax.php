@@ -146,5 +146,12 @@ if($action == "get_pdetails"){
 	if($get)
 		echo $get;
 }
+
+// document
+if($action == "save_document"){
+	$save = $crud->save_document();
+	if($save)
+		echo $save;
+}
 ob_end_flush();
 ?>
