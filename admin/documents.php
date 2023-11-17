@@ -74,7 +74,7 @@
 									<td class="text-center">
 										<button class="btn btn-sm btn-outline-primary view_career" type="button" data-id="<?php echo $row['id'] ?>" >View</button>
 										<button class="btn btn-sm btn-outline-primary edit_document" type="button" data-id="<?php echo $row['id'] ?>" >Edit</button>
-										<button class="btn btn-sm btn-outline-danger delete_career" type="button" data-id="<?php echo $row['id'] ?>">Delete</button>
+										<button class="btn btn-sm btn-outline-danger delete_document" type="button" data-id="<?php echo $row['id'] ?>">Delete</button>
 									</td>
 								</tr>
 								<?php endwhile; ?>
@@ -117,14 +117,13 @@
 		uni_modal("Job Opportunity","view_jobs.php?id="+$(this).attr('data-id'),'mid-large')
 		
 	})
-	$('.delete_career').click(function(){
-		_conf("Are you sure to delete this post?","delete_career",[$(this).attr('data-id')],'mid-large')
+	$('.delete_document').click(function(){
+		_conf("Are you sure to delete this document?","delete_document",[$(this).attr('data-id')],'mid-large')
 	})
-
-	function delete_career($id){
+	function delete_document($id){
 		start_load()
 		$.ajax({
-			url:'ajax.php?action=delete_career',
+			url:'ajax.php?action=delete_document',
 			method:'POST',
 			data:{id:$id},
 			success:function(resp){

@@ -153,5 +153,10 @@ if($action == "save_document"){
 	if($save)
 		echo $save;
 }
+if($action == "delete_document"){
+	$save = $crud->delete_document();
+	if($save)
+		echo $save;
+}
 ob_end_flush();
 ?>

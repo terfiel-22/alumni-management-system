@@ -459,4 +459,11 @@ Class Action {
 		if($save)
 			return 1;
 	}
+	function delete_document(){
+		extract($_POST);
+		$delete = $this->db->query("DELETE FROM documents where id = ".$id);
+		if($delete){
+			return 1;
+		}
+	}
 }
