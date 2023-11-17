@@ -29,9 +29,8 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <b>Funds List</b>
+                        <b>Projects</b>
                         <span class="">
-
                             <button class="btn btn-primary btn-block btn-sm col-sm-2 float-right" type="button" id="new_fund">
                                 <i class="fa fa-plus"></i> New</button>
                         </span>
@@ -42,12 +41,10 @@
                             <thead>
                                 <tr>
                                     <th class="text-center">#</th>
-                                    <th class="">Fund Name</th>
+                                    <th class="">Project Name</th>
                                     <th class="">Goal</th>
-                                    <th class="">Fund Manager</th>
                                     <th class="">Start Date</th>
                                     <th class="">End Date</th>
-                                    <th class="">Current Amount Raised</th>
                                     <th class="">Status</th>
                                     <th class="text-center">Action</th>
                                 </tr>
@@ -56,7 +53,7 @@
                                 <?php
                                 $i = 1;
                                 include('../utils/format_date.php');
-                                $funds =  $conn->query("SELECT f.*,Concat(a.lastname,', ',a.firstname,' ',a.middlename) as fund_manager from funds f inner join alumnus_bio a on a.id = f.fund_manager_id order by f.id desc");
+                                $funds =  $conn->query("SELECT * from projects order by id desc");
                                 while ($row = $funds->fetch_assoc()) :
                                 ?>
                                     <tr>
@@ -69,16 +66,10 @@
                                             <p><b><?php echo $row['goal'] ?></b></p>
                                         </td>
                                         <td class="">
-                                            <p><b><?php echo $row['fund_manager'] ?></b></p>
-                                        </td>
-                                        <td class="">
                                             <p><b><?php echo format_date($row['start_date'], 'F d, Y'); ?></b></p>
                                         </td>
                                         <td class="">
                                             <p><b><?php echo format_date($row['end_date'], 'F d, Y'); ?></b></p>
-                                        </td>
-                                        <td class="">
-                                            <p><b><?php echo "PHP " . $row['current_amount_raised'] ?></b></p>
                                         </td>
                                         <td class="text-center">
                                             <?php if ($row['status'] == 1) : ?>
