@@ -79,7 +79,8 @@
 												<span class="sr-only">Toggle Dropdown</span>
 											</button>
 											<div class="dropdown-menu">
-												<a class="dropdown-item download_document" href="javascript:void(0)" data-id = '<?php echo $row['id'] ?>'>Download</a>
+												<a class="dropdown-item" href="assets/uploads/documents/<?php echo $row['id'] ?>_document.<?php echo $row['file_extension'] ?>"
+												target="_blank" >Download</a>
 												<div class="dropdown-divider"></div>
 												<a class="dropdown-item edit_document" href="javascript:void(0)" data-id = '<?php echo $row['id'] ?>'>Edit</a>
 												<div class="dropdown-divider"></div>
@@ -124,11 +125,7 @@
 	$('.edit_document').click(function(){
 		uni_modal("Manage Document","manage_document.php?id="+$(this).attr('data-id'),'mid-large')
 		
-	})
-	$('.view_career').click(function(){
-		uni_modal("Job Opportunity","view_jobs.php?id="+$(this).attr('data-id'),'mid-large')
-		
-	})
+	}) 
 	$('.delete_document').click(function(){
 		_conf("Are you sure to delete this document?","delete_document",[$(this).attr('data-id')],'mid-large')
 	})
