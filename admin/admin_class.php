@@ -245,6 +245,24 @@ Class Action {
 	function update_alumni_acc(){
 		extract($_POST);
 		$update = $this->db->query("UPDATE alumnus_bio set status = $status where id = $id");
+		
+		if($update && $status==1)
+		{
+			// Get email
+			// Get document's data on database
+			$qry = $this->db->query("SELECT * FROM alumnus_bio where id=".$id)->fetch_array();
+			foreach($qry as $k =>$v){
+				$$k = $v;
+			}
+			try {
+				require "../utils/send_email.php";
+				$email_subject = "Your account is verified.";
+				$email_body = "Congratulations! Your account is successfully verified.";
+				send_email($email,$email_subject,$email_body);
+			} catch (Exception $e) {
+				return $e->getMessage();
+			}
+		}
 		if($update)
 			return 1;
 	}
