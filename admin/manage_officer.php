@@ -15,7 +15,7 @@ if (isset($_GET['id'])) {
 			<div class="col-md-12">
 				<label class="control-label">Alumni</label>
 				<select name="alumni" id="alumni" class="form-control">
-					<option hidden>-- Select Alumni --</option>
+					<option value='' hidden>-- Select Alumni --</option>
 					<?php
 					$alumni = $conn->query("SELECT *, Concat(lastname,', ',firstname,' ',middlename) as name from alumnus_bio order by Concat(lastname,', ',firstname,' ',middlename) asc");
 					while ($row = $alumni->fetch_assoc()) :
@@ -29,7 +29,7 @@ if (isset($_GET['id'])) {
 			<div class="col-md-12">
 				<label class="control-label">Position</label>
 				<select name="position" class="form-control">
-					<option hidden>-- Select Position --</option>
+					<option value="" hidden>-- Select Position --</option>
 					<option value="President" <?php echo isset($_GET['id']) && $position == "President" ? 'selected' : '' ?>>President</option>
 					<option value="Vice President" <?php echo isset($_GET['id']) && $position == "Vice President" ? 'selected' : '' ?>>Vice President</option>
 					<option value="Secretary" <?php echo isset($_GET['id']) && $position == "Secretary" ? 'selected' : '' ?>>Secretary</option>
@@ -62,6 +62,12 @@ if (isset($_GET['id'])) {
 				}
 				if (resp == 2) {
 					alert_toast("Duplicate alumni/position is not allowed.", 'danger')
+					setTimeout(function() {
+						location.reload()
+					}, 1000)
+				}
+				if (resp == 3) {
+					alert_toast("Insert a valid data.", 'danger')
 					setTimeout(function() {
 						location.reload()
 					}, 1000)

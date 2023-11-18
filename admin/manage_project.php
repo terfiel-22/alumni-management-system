@@ -39,7 +39,7 @@ include "../utils/format_date.php";
             <div class="col-md-12">
                 <label class="control-label">Status</label>
                 <select name="status" class="custom-select">
-                    <option hidden>-- Select Status --</option>
+                    <option value="" hidden>-- Select Status --</option>
                     <option value="1" <?php echo isset($status) && $status == "1" ? 'selected' : '' ?>>Active</option>
                     <option value="2" <?php echo isset($status) && $status == "2" ? 'selected' : '' ?>>Suspended</option>
                 </select>
@@ -64,9 +64,14 @@ include "../utils/format_date.php";
                         location.reload()
                     }, 1000)
                 }
-
                 if (resp == 2) {
                     alert_toast("Duplicated project is not allowed.", 'danger')
+                    setTimeout(function() {
+                        location.reload()
+                    }, 1000)
+                }
+                if (resp == 3) {
+                    alert_toast("Insert a valid data.", 'danger')
                     setTimeout(function() {
                         location.reload()
                     }, 1000)

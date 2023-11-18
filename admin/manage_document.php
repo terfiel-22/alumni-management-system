@@ -50,7 +50,18 @@ if (isset($_GET['id'])) {
 					setTimeout(function() {
 						location.reload()
 					}, 1500)
-
+				}
+				if (resp == 3) {
+					alert_toast("Insert a valid data.", 'danger')
+					setTimeout(function() {
+						location.reload()
+					}, 1000)
+				}
+				if (resp == 4) {
+					alert_toast("Insert a valid file. (pdf,docx,doc & size is less than 25mb).", 'danger')
+					setTimeout(function() {
+						location.reload()
+					}, 2000)
 				}
 			}
 		})

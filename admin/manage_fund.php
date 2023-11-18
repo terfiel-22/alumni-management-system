@@ -15,7 +15,7 @@ include "../utils/format_date.php";
             <div class="col-md-12">
                 <label class="control-label">Project</label>
                 <select name="project_id" id="project" class="custom-select">
-                    <option hidden>-- Select Project --</option>
+                    <option value="" hidden>-- Select Project --</option>
                     <?php
                     $projects = $conn->query("SELECT * from projects order by name asc");
                     while ($row = $projects->fetch_assoc()) :
@@ -29,7 +29,7 @@ include "../utils/format_date.php";
             <div class="col-md-12">
                 <label class="control-label">Fund Manager</label>
                 <select name="fund_manager_id" id="fund_manager" class="custom-select">
-                    <option hidden>-- Select Fund Manager --</option>
+                    <option value="" hidden>-- Select Fund Manager --</option>
                     <?php
                     $alumni = $conn->query("SELECT *, Concat(lastname,', ',firstname,' ',middlename) as name from alumnus_bio order by Concat(lastname,', ',firstname,' ',middlename) asc");
                     while ($row = $alumni->fetch_assoc()) :
@@ -48,7 +48,7 @@ include "../utils/format_date.php";
         <div class="form-group">
             <div class="col-md-12">
                 <label class="control-label">Target Amount</label>
-                <input type="text" name="target_amount" class="form-control" value="<?php echo isset($current_amount_raised) ? $current_amount_raised : '' ?>">
+                <input type="text" name="target_amount" class="form-control" value="<?php echo isset($target_amount) ? $target_amount : '' ?>">
             </div>
         </div>
     </form>
@@ -70,9 +70,14 @@ include "../utils/format_date.php";
                         location.reload()
                     }, 1000)
                 }
-
                 if (resp == 2) {
                     alert_toast("Duplicated project is not allowed.", 'danger')
+                    setTimeout(function() {
+                        location.reload()
+                    }, 1000)
+                }
+                if (resp == 3) {
+                    alert_toast("Insert a valid data.", 'danger')
                     setTimeout(function() {
                         location.reload()
                     }, 1000)

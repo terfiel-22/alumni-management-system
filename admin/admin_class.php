@@ -1,6 +1,8 @@
 <?php
 session_start();
 ini_set('display_errors', 1);
+
+include "../utils/validate.php";
 class Action
 {
 	private $db;
@@ -491,6 +493,13 @@ class Action
 			}
 		}
 
+		if (
+			!$_FILES['document'] ||
+			!$name ||
+			!$_SESSION['login_id']
+		) return 3;
+
+		if (!isValidFile($_FILES['document'])) return 4;
 
 		$file = explode('.', $_FILES['document']['name']);
 		$file = end($file);
@@ -568,6 +577,10 @@ class Action
 	function save_officer()
 	{
 		extract($_POST);
+		if (
+			!$alumni ||
+			!$position
+		) return 3;
 		$data = "alumnus_bio_id = '$alumni'";
 		$data .= ",position = '$position'";
 		try {
@@ -587,6 +600,15 @@ class Action
 	function save_fund()
 	{
 		extract($_POST);
+		if (
+			!$project_id ||
+			!$current_amount_raised ||
+			!$target_amount ||
+			!$fund_manager_id
+		) return 3;
+
+		if (!(isValidMoneyFormat($current_amount_raised) && isValidMoneyFormat($target_amount))) return 3;
+
 		$data = "project_id = '$project_id'";
 		$data .= ",current_amount_raised = '$current_amount_raised'";
 		$data .= ",target_amount = '$target_amount'";
@@ -606,7 +628,7 @@ class Action
 	function delete_fund()
 	{
 		extract($_POST);
-		// Delete document on DB
+		// Delete fund on DB
 		$delete = $this->db->query("DELETE FROM funds where id = " . $id);
 		if ($delete) {
 			return 1;
@@ -618,6 +640,13 @@ class Action
 	function save_project()
 	{
 		extract($_POST);
+		if (
+			$name == '' ||
+			$goal == '' ||
+			$start_date == '' ||
+			$end_date == '' ||
+			$status == ''
+		) return 3;
 		$data = "name = '$name'";
 		$data .= ",goal = '$goal'";
 		$data .= ",start_date = '$start_date'";
@@ -632,13 +661,13 @@ class Action
 			if ($save)
 				return 1;
 		} catch (Exception $e) {
-			return $e->getMessage();
+			return 2;
 		}
 	}
 	function delete_project()
 	{
 		extract($_POST);
-		// Delete document on DB
+		// Delete project on DB
 		$delete = $this->db->query("DELETE FROM projects where id = " . $id);
 		if ($delete) {
 			return 1;
