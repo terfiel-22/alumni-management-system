@@ -11,10 +11,10 @@ include "../utils/format_date.php";
 <div class="container-fluid">
     <form action="" id="manage-fund">
         <input type="hidden" name="id" value="<?php echo isset($_GET['id']) ? $_GET['id'] : '' ?>" class="form-control">
-        <div class="row form-group">
+        <div class="form-group">
             <div class="col-md-12">
                 <label class="control-label">Project</label>
-                <select name="project_id" id="project" class="form-control">
+                <select name="project_id" id="project" class="custom-select">
                     <option hidden>-- Select Project --</option>
                     <?php
                     $projects = $conn->query("SELECT * from projects order by name asc");
@@ -25,10 +25,10 @@ include "../utils/format_date.php";
                 </select>
             </div>
         </div>
-        <div class="row form-group">
+        <div class="form-group">
             <div class="col-md-12">
                 <label class="control-label">Fund Manager</label>
-                <select name="fund_manager_id" id="fund_manager" class="form-control">
+                <select name="fund_manager_id" id="fund_manager" class="custom-select">
                     <option hidden>-- Select Fund Manager --</option>
                     <?php
                     $alumni = $conn->query("SELECT *, Concat(lastname,', ',firstname,' ',middlename) as name from alumnus_bio order by Concat(lastname,', ',firstname,' ',middlename) asc");
@@ -39,13 +39,13 @@ include "../utils/format_date.php";
                 </select>
             </div>
         </div>
-        <div class="row form-group">
+        <div class="form-group">
             <div class="col-md-12">
                 <label class="control-label">Current Amount Raised</label>
                 <input type="text" name="current_amount_raised" class="form-control" value="<?php echo isset($current_amount_raised) ? $current_amount_raised : '' ?>">
             </div>
         </div>
-        <div class="row form-group">
+        <div class="form-group">
             <div class="col-md-12">
                 <label class="control-label">Target Amount</label>
                 <input type="text" name="target_amount" class="form-control" value="<?php echo isset($current_amount_raised) ? $current_amount_raised : '' ?>">

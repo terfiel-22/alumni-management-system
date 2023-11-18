@@ -1,21 +1,6 @@
 <?php include('db_connect.php'); ?>
 
 <div class="container-fluid">
-    <style>
-        input[type=checkbox] {
-            /* Double-sized Checkboxes */
-            -ms-transform: scale(1.5);
-            /* IE */
-            -moz-transform: scale(1.5);
-            /* FF */
-            -webkit-transform: scale(1.5);
-            /* Safari and Chrome */
-            -o-transform: scale(1.5);
-            /* Opera */
-            transform: scale(1.5);
-            padding: 10px;
-        }
-    </style>
     <div class="col-lg-12">
         <div class="row mb-4 mt-4">
             <div class="col-md-12">
@@ -116,9 +101,9 @@
                             }
                             ?>
                             <caption>
-                                <b>Total funds: </b> &nbsp;&nbsp;PHP <?php echo $row['total_funds']; ?>
+                                <b>Total funds: </b> &nbsp;&nbsp;PHP <?php echo $row['total_funds'] ? $row['total_funds'] : '0.00'; ?>
                                 <br>
-                                <b>Total target amount: </b> &nbsp;&nbsp;PHP <?php echo $row['total_target_amt']; ?>
+                                <b>Total target amount: </b> &nbsp;&nbsp;PHP <?php echo $row['total_target_amt'] ? $row['total_target_amt'] : '0.00'; ?>
                             </caption>
                         </table>
                     </div>
@@ -181,7 +166,7 @@
         });
     })
     $('#new_fund').click(function() {
-        uni_modal("New Entry", "manage_fund.php", 'mid-large')
+        uni_modal("New Entry", "manage_fund.php")
     })
 
     $('.edit_fund').click(function() {
