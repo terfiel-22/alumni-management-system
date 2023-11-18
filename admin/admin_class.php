@@ -391,6 +391,16 @@ class Action
 		if ($save)
 			return 1;
 	}
+	function delete_forum()
+	{
+		extract($_POST);
+		$delete = $this->db->query("DELETE FROM forum_topics where id = " . $id);
+		if ($delete) {
+			$this->db->query("DROP TABLE IF EXISTS temp_forum_topics");
+			return 1;
+		}
+	}
+	// Notification
 	function save_temp_forum($forum_id, $title)
 	{
 		$this->db->query("DROP TABLE IF EXISTS temp_forum_topics");
@@ -404,13 +414,10 @@ class Action
 		$data .= ", forum_id = '$forum_id'";
 		$this->db->query("INSERT INTO temp_forum_topics set " . $data);
 	}
-	function delete_forum()
+	function delete_temp_forum_topics()
 	{
-		extract($_POST);
-		$delete = $this->db->query("DELETE FROM forum_topics where id = " . $id);
-		if ($delete) {
-			return 1;
-		}
+		$this->db->query("DROP TABLE IF EXISTS temp_forum_topics");
+		return 1;
 	}
 	function save_comment()
 	{
@@ -672,12 +679,5 @@ class Action
 		if ($delete) {
 			return 1;
 		}
-	}
-
-	// Notification
-	function delete_temp_forum_topics()
-	{
-		$this->db->query("DROP TABLE IF EXISTS temp_forum_topics");
-		return 1;
 	}
 }
