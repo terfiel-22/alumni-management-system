@@ -130,7 +130,7 @@
                     pageSize: 'LEGAL',
                     title: 'Projects Report',
                     exportOptions: {
-                        columns: [0, 1, 2, 3, 4, 5, 6]
+                        columns: [0, 1, 2, 3, 4, 5]
                     }
                 },
                 {
@@ -140,7 +140,7 @@
                     pageSize: 'LEGAL',
                     title: 'Projects Report',
                     exportOptions: {
-                        columns: [0, 1, 2, 3, 4, 5, 6]
+                        columns: [0, 1, 2, 3, 4, 5]
                     }
                 },
                 {
@@ -150,7 +150,7 @@
                     pageSize: 'LEGAL',
                     title: 'Projects Report',
                     exportOptions: {
-                        columns: [0, 1, 2, 3, 4, 5, 6]
+                        columns: [0, 1, 2, 3, 4, 5]
                     }
                 },
             ],
