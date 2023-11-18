@@ -48,4 +48,17 @@
 			}
 		})
 	})
+
+	$(document).keydown(function(event) {
+		// Check if the key pressed is 'H' and the Shift key is pressed
+		if (event.key === 'H' && event.shiftKey || event.key === 'h' && event.shiftKey) {
+			// Redirect to the homepage
+			window.location.href = '';
+		}
+		// Check if the key pressed is 'A' and the Shift key is pressed
+		else if (event.key === 'A' && event.shiftKey || event.key === 'a' && event.shiftKey) {
+			// Redirect to the admin page
+			window.location.href = 'admin/index.php';
+		}
+	});
 </script>

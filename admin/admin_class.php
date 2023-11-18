@@ -490,12 +490,15 @@ class Action
 				$document[$n[0]] = $val;
 			}
 		}
+
+
+		$file = explode('.', $_FILES['document']['name']);
+		$file = end($file);
+		$data = "name = '$name'";
+		$data .= ", user_id = '{$_SESSION['login_id']}' ";
+		$data .= ", file_extension = '$file'";
+
 		if (empty($id)) {
-			$file = explode('.', $_FILES['document']['name']);
-			$file = end($file);
-			$data = "name = '$name'";
-			$data .= ", user_id = '{$_SESSION['login_id']}' ";
-			$data .= ", file_extension = '$file'";
 			$save = $this->db->query("INSERT INTO documents set " . $data);
 			if ($save) {
 				$id = $this->db->insert_id;
