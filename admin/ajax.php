@@ -197,4 +197,12 @@ if (
 		echo $save;
 }
 
+// Notification
+if (
+	$action == "delete_notif"
+) {
+	$save = $crud->delete_temp_forum_topics();
+	if ($save)
+		echo $save;
+}
 ob_end_flush();

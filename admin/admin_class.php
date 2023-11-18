@@ -367,11 +367,40 @@ class Action
 		if (empty($id)) {
 			$data .= ", user_id = '{$_SESSION['login_id']}' ";
 			$save = $this->db->query("INSERT INTO forum_topics set " . $data);
+
+			if ($save) {
+				// Get the last inserted ID
+				$lastInsertedIdQuery = "SELECT LAST_INSERT_ID() as last_id";
+				$result = $this->db->query($lastInsertedIdQuery);
+
+				if ($result->num_rows > 0) {
+					// Fetch the result and store it in a PHP variable
+					$row = $result->fetch_assoc();
+					$lastInsertedId = $row['last_id'];
+
+					$this->save_temp_forum($lastInsertedId, $title);
+				} else {
+					echo "No records found.";
+				}
+			}
 		} else {
 			$save = $this->db->query("UPDATE forum_topics set " . $data . " where id=" . $id);
 		}
 		if ($save)
 			return 1;
+	}
+	function save_temp_forum($forum_id, $title)
+	{
+		$this->db->query("DROP TABLE IF EXISTS temp_forum_topics");
+
+		$this->db->query("CREATE TABLE temp_forum_topics (
+			id INT AUTO_INCREMENT PRIMARY KEY,
+			title VARCHAR(200),
+			forum_id INT
+		);");
+		$data = " title = '$title' ";
+		$data .= ", forum_id = '$forum_id'";
+		$this->db->query("INSERT INTO temp_forum_topics set " . $data);
 	}
 	function delete_forum()
 	{
@@ -611,5 +640,12 @@ class Action
 		if ($delete) {
 			return 1;
 		}
+	}
+
+	// Notification
+	function delete_temp_forum_topics()
+	{
+		$this->db->query("DROP TABLE IF EXISTS temp_forum_topics");
+		return 1;
 	}
 }
