@@ -4,7 +4,8 @@ try {
     while ($row = $forums->fetch_assoc()) :
 ?>
         <div class="alert alert-warning alert-dismissible fade show mw-100" role="alert">
-            <?php echo $row['title']; ?>
+            <span class="fs-2">New post is added:</span></span>
+            <h1><?php echo $row['title']; ?></h1>
             <button type="button" class="close notif_close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
