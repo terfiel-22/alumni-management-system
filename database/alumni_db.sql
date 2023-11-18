@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 18, 2023 at 07:02 AM
+-- Generation Time: Nov 18, 2023 at 04:00 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -171,7 +171,8 @@ INSERT INTO `forum_comments` (`id`, `topic_id`, `comment`, `user_id`, `date_crea
 (5, 0, '', 1, '2020-10-16 09:49:34'),
 (8, 3, 'gagpddsdfsdffff', 4, '2023-11-16 19:35:39'),
 (12, 1, 'jj', 4, '2023-11-17 19:37:48'),
-(13, 1, 'hello', 6, '2023-11-18 13:31:34');
+(13, 1, 'hello', 6, '2023-11-18 13:31:34'),
+(15, 1, 'dd', 0, '2023-11-18 22:51:58');
 
 -- --------------------------------------------------------
 
@@ -186,29 +187,6 @@ CREATE TABLE `forum_topics` (
   `user_id` int(30) NOT NULL,
   `date_created` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `forum_topics`
---
-
-INSERT INTO `forum_topics` (`id`, `title`, `description`, `user_id`, `date_created`) VALUES
-(18, 'df', 'dfdfdf', 4, '2023-11-17 18:25:03'),
-(19, 'Sample 1', 'Sample 1', 1, '2023-11-17 19:31:36'),
-(20, 'dd', 'dd', 1, '2023-11-18 10:21:54'),
-(21, 'dfdf', 'dfdf', 1, '2023-11-18 10:22:48'),
-(22, 'dfdf', 'dfdf', 1, '2023-11-18 10:23:53'),
-(23, 'dfgdfg', 'dfgdfg', 1, '2023-11-18 10:24:48'),
-(24, 'sdfsdf', 'sdfsdf', 1, '2023-11-18 10:25:22'),
-(25, 'sdfsdf', 'sdfsdf', 1, '2023-11-18 10:32:03'),
-(26, 'sdf', 'sdf', 1, '2023-11-18 10:38:12'),
-(27, 'sdfsdf', 'sdfsdf', 1, '2023-11-18 10:38:58'),
-(28, 'sample', 'sample', 1, '2023-11-18 10:39:30'),
-(29, 'dffdf', 'dfdf', 1, '2023-11-18 10:49:25'),
-(30, 'sdfsdfsdfsdf', 'sdfsdf', 1, '2023-11-18 11:07:22'),
-(31, 'fghfgh', 'fghfgh', 1, '2023-11-18 11:07:44'),
-(32, 'sdfsdf', 'sdfsdf', 1, '2023-11-18 11:08:35'),
-(33, 'sample', 'sample', 1, '2023-11-18 11:09:13'),
-(35, 'Recent Post', '111', 6, '2023-11-18 13:50:54');
 
 -- --------------------------------------------------------
 
@@ -264,7 +242,7 @@ CREATE TABLE `officers` (
 --
 
 INSERT INTO `officers` (`id`, `alumnus_bio_id`, `position`) VALUES
-(2, 2, 'Treasurer');
+(10, 2, 'Vice President');
 
 -- --------------------------------------------------------
 
@@ -280,13 +258,6 @@ CREATE TABLE `projects` (
   `end_date` date NOT NULL,
   `status` int(10) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `projects`
---
-
-INSERT INTO `projects` (`id`, `name`, `goal`, `start_date`, `end_date`, `status`) VALUES
-(9, 'Random', 'Random', '2023-11-21', '2023-11-22', 1);
 
 -- --------------------------------------------------------
 
@@ -406,7 +377,7 @@ ALTER TABLE `gallery`
 ALTER TABLE `officers`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `position` (`position`),
-  ADD KEY `officers_ibfk_1` (`alumnus_bio_id`);
+  ADD UNIQUE KEY `alumnus_bio_id` (`alumnus_bio_id`);
 
 --
 -- Indexes for table `projects`
@@ -453,7 +424,7 @@ ALTER TABLE `courses`
 -- AUTO_INCREMENT for table `documents`
 --
 ALTER TABLE `documents`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `events`
@@ -471,19 +442,19 @@ ALTER TABLE `event_commits`
 -- AUTO_INCREMENT for table `forum_comments`
 --
 ALTER TABLE `forum_comments`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `forum_topics`
 --
 ALTER TABLE `forum_topics`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `funds`
 --
 ALTER TABLE `funds`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `gallery`
@@ -495,13 +466,13 @@ ALTER TABLE `gallery`
 -- AUTO_INCREMENT for table `officers`
 --
 ALTER TABLE `officers`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `projects`
 --
 ALTER TABLE `projects`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `system_settings`
