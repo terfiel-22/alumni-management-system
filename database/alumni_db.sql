@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 18, 2023 at 04:00 PM
+-- Generation Time: Nov 19, 2023 at 06:26 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -90,7 +90,11 @@ CREATE TABLE `courses` (
 --
 
 INSERT INTO `courses` (`id`, `course`, `about`) VALUES
-(1, 'BS Information Technology', 'Sample');
+(3, 'General Academic Strand', ''),
+(4, 'Accountancy and Business Management', ''),
+(6, 'Science, Technology and Mathematics', ''),
+(7, 'TVL', ''),
+(8, 'ICT', '');
 
 -- --------------------------------------------------------
 
@@ -418,7 +422,7 @@ ALTER TABLE `careers`
 -- AUTO_INCREMENT for table `courses`
 --
 ALTER TABLE `courses`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `documents`

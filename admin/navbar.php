@@ -13,7 +13,7 @@
 	<div class="sidebar-list">
 		<a href="index.php?page=home" class="nav-item nav-home"><span class='icon-field'><i class="fa fa-home"></i></span> Home</a>
 		<a href="index.php?page=gallery" class="nav-item nav-gallery"><span class='icon-field'><i class="fa fa-image"></i></span> Gallery </a>
-		<a href="index.php?page=courses" class="nav-item nav-courses"><span class='icon-field'><i class="fa fa-list"></i></span> Course List</a>
+		<a href="index.php?page=courses" class="nav-item nav-courses"><span class='icon-field'><i class="fa fa-book"></i></span> Academic Strand List</a>
 		<a href="index.php?page=alumni" class="nav-item nav-alumni"><span class='icon-field'><i class="fa fa-users"></i></span> Alumni List</a>
 		<a href="index.php?page=jobs" class="nav-item nav-jobs"><span class='icon-field'><i class="fa fa-briefcase"></i></span> Career</a>
 		<a href="index.php?page=funds" class="nav-item nav-funds"><span class='icon-field'><i class="fa fa-coins"></i></span> Funds </a>
