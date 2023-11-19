@@ -3,7 +3,7 @@
 function isValidMoneyFormat($moneyString)
 {
     // Define the regular expression pattern for a valid money format
-    $pattern = '/^\d{1,3}(,\d{3})*(\.\d+)?$/';
+    $pattern = '/^\d+(\.\d+)?$/';
 
     // Use preg_match to check if the string matches the pattern
     return preg_match($pattern, $moneyString);
