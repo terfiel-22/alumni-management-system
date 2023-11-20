@@ -173,7 +173,6 @@ class Action
 		$chk = $this->db->query("SELECT * FROM users where username = '$email' and id != '{$_SESSION['login_id']}' ")->num_rows;
 		if ($chk > 0) {
 			return 2;
-			exit;
 		}
 		$save = $this->db->query("UPDATE users set $data where id = '{$_SESSION['login_id']}' ");
 		if ($save) {
@@ -192,13 +191,25 @@ class Action
 				$data .= ", avatar = '$fname' ";
 			}
 			$save_alumni = $this->db->query("UPDATE alumnus_bio set $data where id = '{$_SESSION['bio']['id']}' ");
-			if ($data) {
-				foreach ($_SESSION as $key => $value) {
-					unset($_SESSION[$key]);
+			// if ($data) {
+			// 	foreach ($_SESSION as $key => $value) {
+			// 		unset($_SESSION[$key]);
+			// 	}
+			// 	$login = $this->login2();
+			// 	if ($login)
+			// 		return 1;
+			// }
+			if ($save_alumni) {
+				if ($_SESSION['login_alumnus_id'] > 0) {
+					$bio = $this->db->query("SELECT * FROM alumnus_bio where id = " . $_SESSION['login_alumnus_id']);
+					if ($bio->num_rows > 0) {
+						foreach ($bio->fetch_array() as $key => $value) {
+							if ($key != 'passwors' && !is_numeric($key))
+								$_SESSION['bio'][$key] = $value;
+						}
+						return 1;
+					}
 				}
-				$login = $this->login2();
-				if ($login)
-					return 1;
 			}
 		}
 	}

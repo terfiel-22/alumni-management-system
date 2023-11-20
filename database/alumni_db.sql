@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 19, 2023 at 06:26 AM
+-- Generation Time: Nov 20, 2023 at 09:28 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -33,6 +33,8 @@ CREATE TABLE `alumnus_bio` (
   `middlename` varchar(200) NOT NULL,
   `lastname` varchar(200) NOT NULL,
   `gender` varchar(10) NOT NULL,
+  `address` varchar(200) NOT NULL,
+  `employment_status` varchar(200) NOT NULL,
   `batch` year(4) NOT NULL,
   `course_id` int(30) NOT NULL,
   `email` varchar(250) NOT NULL,
@@ -46,8 +48,8 @@ CREATE TABLE `alumnus_bio` (
 -- Dumping data for table `alumnus_bio`
 --
 
-INSERT INTO `alumnus_bio` (`id`, `firstname`, `middlename`, `lastname`, `gender`, `batch`, `course_id`, `email`, `connected_to`, `avatar`, `status`, `date_created`) VALUES
-(2, 'Mike', 'D', 'Williams', 'Male', '2009', 1, 'mwilliams@sample.com', 'My Company', '1602730260_avatar.jpg', 1, '2020-10-15');
+INSERT INTO `alumnus_bio` (`id`, `firstname`, `middlename`, `lastname`, `gender`, `address`, `employment_status`, `batch`, `course_id`, `email`, `connected_to`, `avatar`, `status`, `date_created`) VALUES
+(2, 'Mike', 'D', 'Williams', 'Male', '', '', '2009', 1, 'mwilliams@sample.com', 'My Company', '1602730260_avatar.jpg', 1, '2020-10-15');
 
 -- --------------------------------------------------------
 
@@ -90,7 +92,7 @@ CREATE TABLE `courses` (
 --
 
 INSERT INTO `courses` (`id`, `course`, `about`) VALUES
-(3, 'General Academic Strand', ''),
+(1, 'General Academic Strand', ''),
 (4, 'Accountancy and Business Management', ''),
 (6, 'Science, Technology and Mathematics', ''),
 (7, 'TVL', ''),
@@ -206,6 +208,13 @@ CREATE TABLE `funds` (
   `project_id` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `funds`
+--
+
+INSERT INTO `funds` (`id`, `current_amount_raised`, `fund_manager_id`, `target_amount`, `project_id`) VALUES
+(11, 333.00, 2, 3332.00, 14);
+
 -- --------------------------------------------------------
 
 --
@@ -262,6 +271,13 @@ CREATE TABLE `projects` (
   `end_date` date NOT NULL,
   `status` int(10) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `projects`
+--
+
+INSERT INTO `projects` (`id`, `name`, `goal`, `start_date`, `end_date`, `status`) VALUES
+(14, 'random', 'ranodm', '2023-11-16', '2023-11-09', 1);
 
 -- --------------------------------------------------------
 
@@ -410,7 +426,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `alumnus_bio`
 --
 ALTER TABLE `alumnus_bio`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `careers`
@@ -458,7 +474,7 @@ ALTER TABLE `forum_topics`
 -- AUTO_INCREMENT for table `funds`
 --
 ALTER TABLE `funds`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `gallery`
@@ -476,7 +492,7 @@ ALTER TABLE `officers`
 -- AUTO_INCREMENT for table `projects`
 --
 ALTER TABLE `projects`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `system_settings`
@@ -488,7 +504,7 @@ ALTER TABLE `system_settings`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables
