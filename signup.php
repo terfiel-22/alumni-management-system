@@ -80,7 +80,7 @@ include 'admin/db_connect.php';
 
                             <div class="row form-group">
                                 <div class="col-md-4">
-                                    <label for="" class="control-label">11-digits Contact No. <span class="text-muted">(11-digits)</span></label>
+                                    <label for="" class="control-label">Contact No. <span class="text-muted">(11-digits)</span></label>
                                     <input type="text" class="form-control" name="contact_no" required>
                                 </div>
                                 <div class="col-md-4">
