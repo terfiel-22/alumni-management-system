@@ -17,4 +17,4 @@ if (file_exists($envFile)) {
 // Example usage
 $email = $_ENV['EMAIL'];
 $password = $_ENV['PASSWORD'];
-?>
+$semaphore_api = $_ENV['SEMAPHORE_API'];

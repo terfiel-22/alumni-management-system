@@ -279,10 +279,17 @@ class Action
 				$$k = $v;
 			}
 			try {
+				// Send email
 				require "../utils/send_email.php";
 				$email_subject = "Your account is verified.";
-				$email_body = "Congratulations! Your account is successfully verified.";
+				$email_body = "Congratulations! Your account in LUGA NATIONAL HIGH SCHOOL - ALUMNI is successfully verified.";
 				send_email($email, $email_subject, $email_body);
+
+				// Send SMS
+				require "../utils/send_sms.php";
+				$sms_message = "Congratulations! Your account in LUGA NATIONAL HIGH SCHOOL - ALUMNI is successfully verified.";
+				$sender_name = "SEMAPHORE"; //Default sender name
+				send_sms($contact_no, $sms_message, $sender_name);
 			} catch (Exception $e) {
 				return $e->getMessage();
 			}
