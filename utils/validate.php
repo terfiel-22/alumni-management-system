@@ -31,3 +31,12 @@ function isValidFile($file)
 
     return true; // File is valid
 }
+
+function isValidContactNumber($number)
+{
+    // Remove any non-digit characters
+    $cleanedNumber = preg_replace('/\D/', '', $number);
+
+    // Validate the cleaned number
+    return preg_match('/^[0-9]{11}+$/', $cleanedNumber);
+}

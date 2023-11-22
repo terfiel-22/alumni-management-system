@@ -128,13 +128,14 @@ class Action
 	function signup()
 	{
 		extract($_POST);
+
+		if (!isValidContactNumber($contact_no)) return 3;
 		$data = " name = '" . $firstname . ' ' . $lastname . "' ";
 		$data .= ", username = '$email' ";
 		$data .= ", password = '" . md5($password) . "' ";
 		$chk = $this->db->query("SELECT * FROM users where username = '$email' ")->num_rows;
 		if ($chk > 0) {
 			return 2;
-			exit;
 		}
 		$save = $this->db->query("INSERT INTO users set " . $data);
 		if ($save) {
@@ -154,7 +155,7 @@ class Action
 				$data .= ", avatar = '$fname' ";
 			}
 			$save_alumni = $this->db->query("INSERT INTO alumnus_bio set $data ");
-			if ($data) {
+			if ($save_alumni) {
 				$aid = $this->db->insert_id;
 				$this->db->query("UPDATE users set alumnus_id = $aid where id = $uid ");
 				$login = $this->login2();
@@ -166,6 +167,7 @@ class Action
 	function update_account()
 	{
 		extract($_POST);
+		if (!isValidContactNumber($contact_no)) return 3;
 		$data = " name = '" . $firstname . ' ' . $lastname . "' ";
 		$data .= ", username = '$email' ";
 		if (!empty($password))

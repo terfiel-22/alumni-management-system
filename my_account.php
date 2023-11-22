@@ -80,7 +80,11 @@ include 'admin/db_connect.php';
                             </div>
 
                             <div class="row form-group">
-                                <div class="col-md-8">
+                                <div class="col-md-4">
+                                    <label for="" class="control-label">Contact No. <span class="text-muted">(11-digits)</span></label>
+                                    <input type="text" class="form-control" name="contact_no" value="<?php echo $_SESSION['bio']['contact_no'] ?>" required>
+                                </div>
+                                <div class="col-md-4">
                                     <label for="" class="control-label">Address</label>
                                     <input type="text" class="form-control" name="address" value="<?php echo $_SESSION['bio']['address'] ?>" required>
                                 </div>
@@ -172,8 +176,13 @@ include 'admin/db_connect.php';
                     setTimeout(function() {
                         location.reload()
                     }, 700)
-                } else {
-                    $('#msg').html('<div class="alert alert-danger">email already exist.</div>')
+                }
+                if (resp == 2) {
+                    $('#msg').html('<div class="alert alert-danger mt-5">Email already exist.</div>')
+                    end_load()
+                }
+                if (resp == 3) {
+                    $('#msg').html('<div class="alert alert-danger mt-5">Please provide a valid contact no.</div>')
                     end_load()
                 }
             }
