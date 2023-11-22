@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 20, 2023 at 09:28 AM
+-- Generation Time: Nov 22, 2023 at 04:03 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -34,6 +34,7 @@ CREATE TABLE `alumnus_bio` (
   `lastname` varchar(200) NOT NULL,
   `gender` varchar(10) NOT NULL,
   `address` varchar(200) NOT NULL,
+  `contact_no` varchar(200) NOT NULL,
   `employment_status` varchar(200) NOT NULL,
   `batch` year(4) NOT NULL,
   `course_id` int(30) NOT NULL,
@@ -48,8 +49,8 @@ CREATE TABLE `alumnus_bio` (
 -- Dumping data for table `alumnus_bio`
 --
 
-INSERT INTO `alumnus_bio` (`id`, `firstname`, `middlename`, `lastname`, `gender`, `address`, `employment_status`, `batch`, `course_id`, `email`, `connected_to`, `avatar`, `status`, `date_created`) VALUES
-(2, 'Mike', 'D', 'Williams', 'Male', '', '', '2009', 1, 'mwilliams@sample.com', 'My Company', '1602730260_avatar.jpg', 1, '2020-10-15');
+INSERT INTO `alumnus_bio` (`id`, `firstname`, `middlename`, `lastname`, `gender`, `address`, `contact_no`, `employment_status`, `batch`, `course_id`, `email`, `connected_to`, `avatar`, `status`, `date_created`) VALUES
+(2, 'Mike', 'D', 'Williams', 'Male', '', '', '', '2009', 1, 'mwilliams@sample.com', 'My Company', '1602730260_avatar.jpg', 1, '2020-10-15');
 
 -- --------------------------------------------------------
 
@@ -426,7 +427,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `alumnus_bio`
 --
 ALTER TABLE `alumnus_bio`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `careers`
@@ -504,7 +505,7 @@ ALTER TABLE `system_settings`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Constraints for dumped tables
