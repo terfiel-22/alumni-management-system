@@ -1,3 +1,2 @@
-admin/assets/uploads/documents/*
-admin/assets/uploads/gallery/*
+admin/assets/uploads/documents/* 
 .env

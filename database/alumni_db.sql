@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 22, 2023 at 04:03 AM
+-- Generation Time: Nov 28, 2023 at 12:12 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -44,13 +44,6 @@ CREATE TABLE `alumnus_bio` (
   `status` tinyint(1) NOT NULL DEFAULT 0 COMMENT '0= Unverified, 1= Verified',
   `date_created` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `alumnus_bio`
---
-
-INSERT INTO `alumnus_bio` (`id`, `firstname`, `middlename`, `lastname`, `gender`, `address`, `contact_no`, `employment_status`, `batch`, `course_id`, `email`, `connected_to`, `avatar`, `status`, `date_created`) VALUES
-(2, 'Mike', 'D', 'Williams', 'Male', '', '', '', '2009', 1, 'mwilliams@sample.com', 'My Company', '1602730260_avatar.jpg', 1, '2020-10-15');
 
 -- --------------------------------------------------------
 
@@ -209,13 +202,6 @@ CREATE TABLE `funds` (
   `project_id` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `funds`
---
-
-INSERT INTO `funds` (`id`, `current_amount_raised`, `fund_manager_id`, `target_amount`, `project_id`) VALUES
-(11, 333.00, 2, 3332.00, 14);
-
 -- --------------------------------------------------------
 
 --
@@ -233,11 +219,12 @@ CREATE TABLE `gallery` (
 --
 
 INSERT INTO `gallery` (`id`, `about`, `created`) VALUES
-(1, 'Samplee', '2020-10-15 13:08:27'),
-(2, 'asdasd', '2020-10-15 13:15:37'),
-(3, 'asdasdrtgfdg', '2020-10-15 13:15:45'),
-(4, 'dfgdfgdfg', '2020-10-15 13:15:53'),
-(5, 'dfgdfgdfg', '2020-10-15 13:16:07');
+(8, 'Image 1', '2023-11-28 19:10:52'),
+(9, 'Image 2', '2023-11-28 19:11:02'),
+(10, 'Image 3', '2023-11-28 19:11:16'),
+(11, 'Image 4', '2023-11-28 19:11:26'),
+(12, 'Image 6', '2023-11-28 19:11:36'),
+(13, 'Image 6', '2023-11-28 19:11:45');
 
 -- --------------------------------------------------------
 
@@ -250,13 +237,6 @@ CREATE TABLE `officers` (
   `alumnus_bio_id` int(10) NOT NULL,
   `position` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `officers`
---
-
-INSERT INTO `officers` (`id`, `alumnus_bio_id`, `position`) VALUES
-(10, 2, 'Vice President');
 
 -- --------------------------------------------------------
 
@@ -323,8 +303,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `username`, `password`, `type`, `auto_generated_pass`, `alumnus_id`) VALUES
-(1, 'Admin', 'admin', '0192023a7bbd73250516f069df18b500', 1, '', 0),
-(3, 'Mike Williams', 'mwilliams@sample.com', '3cc93e9a6741d8b40460457139cf8ced', 3, '', 2);
+(1, 'Admin', 'admin', '0192023a7bbd73250516f069df18b500', 1, '', 0);
 
 --
 -- Indexes for dumped tables
@@ -427,7 +406,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `alumnus_bio`
 --
 ALTER TABLE `alumnus_bio`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `careers`
@@ -481,7 +460,7 @@ ALTER TABLE `funds`
 -- AUTO_INCREMENT for table `gallery`
 --
 ALTER TABLE `gallery`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `officers`
@@ -505,7 +484,7 @@ ALTER TABLE `system_settings`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Constraints for dumped tables

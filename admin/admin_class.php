@@ -312,7 +312,7 @@ class Action
 			}
 		}
 		if (empty($id)) {
-			$save = $this->db->query("INSERT INTO gallery set name = '$name' ");
+			$save = $this->db->query("INSERT INTO gallery set about = '$about' ");
 			if ($save) {
 				$id = $this->db->insert_id;
 				$folder = "assets/uploads/gallery/";
