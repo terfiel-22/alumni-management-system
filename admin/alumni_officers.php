@@ -38,6 +38,7 @@
 									<th class="">Avatar</th>
 									<th class="">Name</th>
 									<th class="">Position</th>
+									<th class="">Batch</th>
 									<th class="">Status</th>
 									<th class="text-center">Action</th>
 								</tr>
@@ -61,6 +62,9 @@
 										</td>
 										<td class="">
 											<p> <b><?php echo $row['position'] ?></b></p>
+										</td>
+										<td class="">
+											<p> <b><?php echo $row['batch'] ?></b></p>
 										</td>
 										<td class="text-center">
 											<?php if ($row['status'] == 1) : ?>
